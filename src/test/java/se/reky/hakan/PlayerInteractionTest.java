@@ -24,9 +24,19 @@ class PlayerInteractionTest {
     }
 
     @Test
-    public void test() {
-            PlayerInteraction playerInteraction = initiatePlayerInteraction("");
+    public void testPlayerExists() {
+            PlayerInteraction playerInteraction = initiatePlayerInteraction("Aldina");
+             playerInteraction.setupPlayer(player);
+             assertEquals("Aldina", player.getName());
     }
 
+
+    @Test
+    public void testPlayerUpdateHealth() {
+            PlayerInteraction playerInteraction = initiatePlayerInteraction("Jakob");
+            player.setHp(100);
+            playerInteraction.updatePlayerHealth(player, 150);
+            assertEquals(250, player.getHp());
+    }
 
 }
