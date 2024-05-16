@@ -9,7 +9,7 @@ class ActorTest {
     private Player player;
     private Goblin goblin;
     @Test
-    public void testAttack() {
+    public void testAttackDoesDamage() {
 
         player = new Player("Levi", 100, 22);
         goblin = new Goblin("Tim", 100, 22);

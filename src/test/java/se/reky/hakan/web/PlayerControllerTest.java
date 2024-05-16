@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -39,42 +38,48 @@ class PlayerControllerTest {
         }
     }
     @Test
-    public void testAmountOfPlayers() {
+    public void testAmountOfPlayersIsCorrect() {
         webDriver.get("http://localhost:8080/players");
         List<WebElement> players = webDriver.findElements(By.tagName("li"));
         assertEquals(2, players.size());
     }
 
     @Test
-    public void checkFirstPlayer() {
+    public void testFetchPlayer() {
         webDriver.get("http://localhost:8080/players");
         WebElement player = webDriver.findElement(By.tagName("li"));
         assertTrue(player.isDisplayed());
     }
 
     @Test
-    public void testTitleOfSite() {
+    public void testFetchTitleOfSite() {
         webDriver.get("http://localhost:8080/players");
         assertEquals("Players List", webDriver.getTitle());
     }
 
     @Test
-    public void testButtonHasLogIn() {
+    public void testHasLogInButton() {
         webDriver.get("http://localhost:8080/players");
         assertEquals("Logga in", webDriver.findElement(By.tagName("button")).getText());
     }
 
     @Test
-    public void testEndpointText() {
+    public void testEndpointName() {
         webDriver.get("http://localhost:8080/players");
         webDriver.findElement(By.cssSelector("ul li a")).click();
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
         WebElement playerNameWebElement = wait.until((ExpectedConditions.visibilityOfElementLocated(By.className("player-name"))));
         String playerName = playerNameWebElement.getText();
         assertEquals("tove", playerName);
+    }
 
-     ;
-
-
+    @Test
+    public void testEndpointExperienceElement() {
+        webDriver.get("http://localhost:8080/players");
+        webDriver.findElement(By.cssSelector("ul li a")).click();
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+        WebElement playerNameWebElement = wait.until((ExpectedConditions.visibilityOfElementLocated(By.className("player-experience"))));
+        String playerName = playerNameWebElement.getText();
+        assertEquals("16", playerName);
     }
 }

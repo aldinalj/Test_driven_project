@@ -8,7 +8,7 @@ class GameUtilTest {
     private GameUtil gameUtil;
 
     @Test
-    public void testIfNullIsHandled() {
+    public void testNullIsHandled() {
         gameUtil = new GameUtil();
         assertThrows(GameException.class, () -> gameUtil.toLowerCaseButFirstLetterCapitalized(null));
     }

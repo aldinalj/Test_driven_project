@@ -32,7 +32,7 @@ class PlayerInteractionTest {
 
 
     @Test
-    public void testPlayerUpdateHealth() {
+    public void testPlayerHealthIsUpdated() {
             PlayerInteraction playerInteraction = initiatePlayerInteraction("Jakob");
             player.setHp(100);
             playerInteraction.updatePlayerHealth(player, 150);
